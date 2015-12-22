@@ -119,8 +119,8 @@ LambdaCall:
 LineEndConcatenation:
   Enabled: false
 
-LineLength:
-  Max: 80
+# LineLength:
+#   Max: 80
 
 MethodLength:
   Enabled: false
