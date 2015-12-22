@@ -25,6 +25,8 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
+gem "omniauth-google-oauth2"
+gem 'devise', github: 'plataformatec/devise'
 gem 'pundit'
 
 # Use Puma as the app server
@@ -37,6 +39,8 @@ gem 'puma'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'dotenv-rails'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rspec-rails', '~> 3.0'
@@ -45,14 +49,16 @@ end
 group :development do
   gem 'guard', require: false
   gem 'guard-spring', require: false
+  gem 'guard-annotate', require: false
   gem 'guard-pow', require: false
   gem 'guard-bundler', require: false
   gem 'guard-rubocop', require: false
   gem 'guard-rspec', require: false
-  gem 'terminal-notifier-guard'
+  gem 'terminal-notifier-guard', require: false
 
   gem 'quiet_assets'
-  gem 'web-console', '~> 3.0'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end

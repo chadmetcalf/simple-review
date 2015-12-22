@@ -1,13 +1,13 @@
-class HomeController < ApplicationController
+class DashboardController < ApplicationController
   def index
     skip_policy_scope
-    authorize :home
+    authorize :dashboard
   end
 
   private
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def home_params
-    params[:home]
+  def dashboard_params
+    params[:dashboard]
   end
 end
