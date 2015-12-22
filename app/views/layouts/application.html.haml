@@ -13,12 +13,16 @@
     = csrf_meta_tag
 
   %body
-
-    - flash.each do |name, msg|
-      - if msg.is_a?(String)
-        %div{class: "alert-box #{name.to_s == 'notice' ? 'success' : 'alert'}",
-             "data-alert" => ""}
-          = content_tag :div, msg
-          %a.close{href: "#"} ×
-
-    = yield
+    %header
+      - if admin_signed_in?
+        = render 'authenticated_navbar'
+      - else
+        = render 'unauthenticated_navbar'
+    %main{role: "main"}
+      - flash.each do |name, msg|
+        - if msg.is_a?(String)
+          %div{class: "alert-box #{name.to_s == 'notice' ? 'success' : 'alert'}",
+               "data-alert" => ""}
+            = content_tag :div, msg
+            %a.close{href: "#"} ×
+      = yield
