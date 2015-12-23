@@ -11,4 +11,15 @@ class Admin < ApplicationRecord
       admin.email = access_token.info.email
     end
   end
+
+  has_many :rubrics, foreign_key: :created_by
+  has_many :rubrics, foreign_key: :closed_by
+
+  def admin?
+    true
+  end
+
+  def to_s
+    email
+  end
 end

@@ -1,0 +1,8 @@
+= simple_form_for(@rubric) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :closed
+
+  .form-actions
+    = f.button :submit

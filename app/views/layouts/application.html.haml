@@ -18,11 +18,7 @@
         = render 'authenticated_navbar'
       - else
         = render 'unauthenticated_navbar'
+      = display_flash_messages
     %main{role: "main"}
-      - flash.each do |name, msg|
-        - if msg.is_a?(String)
-          %div{class: "alert-box #{name.to_s == 'notice' ? 'success' : 'alert'}",
-               "data-alert" => ""}
-            = content_tag :div, msg
-            %a.close{href: "#"} ×
+
       = yield

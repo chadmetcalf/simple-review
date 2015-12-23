@@ -1,5 +1,5 @@
 class HomePolicy < ApplicationPolicy
   def index?
-    true
+    true # Open to public
   end
 end

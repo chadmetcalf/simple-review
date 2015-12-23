@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Created by:
+  = @rubric.created_by
+%p
+  %b Reviewee:
+  = @rubric.reviewee
+%p
+  %b Closed:
+  = @rubric.closed
+%p
+  %b Closed by:
+  = @rubric.closed_by
+%p
+  %b Closed at:
+  = @rubric.closed_at
+
+= link_to 'Edit', edit_rubric_path(@rubric)
+\|
+= link_to 'Back', rubrics_path

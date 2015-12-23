@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   include Pundit
   after_action :verify_authorized, except: :index, unless: :devise_controller?
   after_action :verify_policy_scoped, only: :index, unless: :devise_controller?
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -15,9 +16,15 @@ class ApplicationController < ActionController::Base
     current_admin
   end
 
+  def authentication_failure
+    flash[:alert] = "Authentication Failed."
+    redirect_to(request.referrer || root_path)
+  end
+
   private
 
-  def user_not_authorized
+  def user_not_authorized(exception)
+    raise exception if Rails.env.development?
     flash[:alert] = "You are not authorized to perform this action."
     redirect_to(request.referrer || root_path)
   end
