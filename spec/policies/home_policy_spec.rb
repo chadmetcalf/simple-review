@@ -1,11 +1,11 @@
 RSpec.describe HomePolicy do
-  let(:user) { User.new }
+  let(:user)  { NullUser.new('guest') }
 
   subject { described_class }
 
   permissions :index? do
     it 'grants access to anyone' do
-      expect(subject).to permit
+      expect(subject).to permit(user)
     end
   end
 end

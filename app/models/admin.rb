@@ -14,6 +14,7 @@ class Admin < ApplicationRecord
 
   has_many :rubrics, foreign_key: :created_by
   has_many :rubrics, foreign_key: :closed_by
+  has_many :rubrics, foreign_key: :reviwee
 
   def admin?
     true

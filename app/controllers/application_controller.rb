@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def pundit_user
+    return NullUser.new('guest') unless admin_signed_in?
     current_admin
   end
 

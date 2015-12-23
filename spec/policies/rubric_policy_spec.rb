@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe RubricPolicy do
+RSpec.describe RubricPolicy do
 
   let(:user) { User.new }
 
