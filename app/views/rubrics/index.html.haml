@@ -4,10 +4,7 @@
   %thead
     %tr
       %th Created by
-      %th Reviewee
-      %th Closed
-      %th Closed by
-      %th Closed at
+      %th Active
       %th
       %th
       %th
@@ -16,14 +13,11 @@
     - @rubrics.each do |rubric|
       %tr
         %td= rubric.created_by
-        %td= rubric.reviewee
-        %td= rubric.closed
-        %td= rubric.closed_by
-        %td= rubric.closed_at
+        %td= rubric.active
         %td= link_to 'Show', rubric
         %td= link_to 'Edit', edit_rubric_path(rubric)
         %td= link_to 'Destroy', rubric, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Rubric', new_rubric_path
+.button= link_to 'New Rubric', new_rubric_path

@@ -40,13 +40,10 @@ ActiveRecord::Schema.define(version: 20151223050222) do
   end
 
   create_table "rubrics", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.uuid     "reviewee_id"
     t.uuid     "created_by_id"
-    t.boolean  "closed",        default: false
-    t.datetime "closed_at"
-    t.uuid     "closed_by"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.boolean  "active",        default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
 end

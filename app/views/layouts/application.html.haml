@@ -8,7 +8,6 @@
     %title= content_for?(:title) ? yield(:title) : "Simple Review"
 
     = stylesheet_link_tag "application"
-    = javascript_include_tag "vendor/modernizr"
     = javascript_include_tag "application", 'data-turbolinks-track' => true
     = csrf_meta_tag
 
@@ -20,5 +19,6 @@
         = render 'unauthenticated_navbar'
       = display_flash_messages
     %main{role: "main"}
-
-      = yield
+      .row
+        .small-11.small-centered.columns
+          = yield

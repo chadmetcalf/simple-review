@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   # Devise Authentication
-  # before_action :authenticate_admin!
+  before_action :authenticate_admin!
 
   # Pundit Authorization
   include Pundit

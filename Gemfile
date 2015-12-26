@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 5.0.0.beta1', '< 5.1'
@@ -44,6 +44,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rspec-rails', '~> 3.0'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -61,10 +62,13 @@ group :development do
   gem 'binding_of_caller'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'active_record_query_trace'
 end
 
 group :test do
   gem 'fuubar'
+  gem "codeclimate-test-reporter", group: :test, require: nil
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
