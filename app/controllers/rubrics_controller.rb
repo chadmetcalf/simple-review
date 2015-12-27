@@ -4,7 +4,7 @@ class RubricsController < ApplicationController
   # GET /rubrics
   # GET /rubrics.json
   def index
-    @rubrics = policy_scope(Rubric)
+    @rubrics = policy_scope(Rubric.includes(:indicators).all)
   end
 
   # GET /rubrics/1
@@ -32,7 +32,7 @@ class RubricsController < ApplicationController
 
     respond_to do |format|
       if @rubric.save
-        format.html { redirect_to @rubric, notice: 'Rubric was successfully created.' }
+        format.html { redirect_to rubrics_path, notice: 'Rubric was successfully created.' }
         format.json { render :show, status: :created, location: @rubric }
       else
         format.html { render :edit }
@@ -46,7 +46,7 @@ class RubricsController < ApplicationController
   def update
     respond_to do |format|
       if @rubric.update(rubric_params)
-        format.html { redirect_to @rubric, notice: 'Rubric was successfully updated.' }
+        format.html { redirect_to rubrics_path, notice: 'Rubric was successfully updated.' }
         format.json { render :show, status: :ok, location: @rubric }
       else
         format.html { render :edit }
@@ -68,7 +68,7 @@ class RubricsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_rubric
-      @rubric = Rubric.find(params[:id])
+      @rubric = Rubric.includes(:indicators).find(params[:id])
       authorize @rubric
     end
 
