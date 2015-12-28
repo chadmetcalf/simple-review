@@ -1,0 +1,29 @@
+%h1 Listing indicators
+
+%table
+  %thead
+    %tr
+      %th Created by
+      %th Rubric
+      %th Active
+      %th Description
+      %th Order
+      %th
+      %th
+      %th
+
+  %tbody
+    - @indicators.each do |indicator|
+      %tr
+        %td= indicator.created_by
+        %td= indicator.rubric_id
+        %td= indicator.active
+        %td= indicator.description
+        %td= indicator.order
+        %td= link_to 'Show', indicator
+        %td= link_to 'Edit', edit_indicator_path(indicator)
+        %td= link_to 'Destroy', indicator, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Indicator', new_indicator_path
