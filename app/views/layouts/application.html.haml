@@ -13,7 +13,7 @@
 
   %body
     %header
-      - if admin_signed_in?
+      - if user_signed_in?
         = render 'authenticated_navbar'
       - else
         = render 'unauthenticated_navbar'

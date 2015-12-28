@@ -26,7 +26,7 @@ class RubricsController < ApplicationController
   # POST /rubrics.json
   def create
     @rubric = Rubric.new(rubric_params) do |rubric|
-      rubric.created_by = current_admin
+      rubric.created_by = current_user
     end
     authorize @rubric
 

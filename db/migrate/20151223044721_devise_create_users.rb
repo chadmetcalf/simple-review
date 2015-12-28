@@ -1,6 +1,6 @@
-class DeviseCreateAdmins < ActiveRecord::Migration[5.0]
+class DeviseCreateUsers < ActiveRecord::Migration[5.0]
   def change
-    create_table :admins, id: :uuid do |t|
+    create_table :users, id: :uuid do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -31,18 +31,18 @@ class DeviseCreateAdmins < ActiveRecord::Migration[5.0]
       # t.datetime :locked_at
 
       ## OmniAuth
-      t.string :admins, :provider
-      t.string :admins, :provider_id
+      t.string :provider
+      t.string :provider_id
 
       t.timestamps null: false
     end
 
-    add_index :admins, :email,                unique: true
-    add_index :admins, :reset_password_token, unique: true
-    add_index :admins, :provider
-    add_index :admins, :provider_id
+    add_index :users, :email,                unique: true
+    add_index :users, :reset_password_token, unique: true
+    add_index :users, :provider
+    add_index :users, :provider_id
 
-    # add_index :admins, :confirmation_token,   unique: true
-    # add_index :admins, :unlock_token,         unique: true
+    # add_index :users, :confirmation_token,   unique: true
+    # add_index :users, :unlock_token,         unique: true
   end
 end

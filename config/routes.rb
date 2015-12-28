@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   resources :rubrics
-  devise_for :admins, :controllers => { :omniauth_callbacks => "admins/omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # Serve websocket cable requests in-process
   # mount ActionCable.server => '/cable'
 
-  authenticated :admin do
+  authenticated :user do
     root to: 'dashboard#index', as: :authenticated_root
   end
   root to: 'home#index'

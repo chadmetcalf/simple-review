@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   # Devise Authentication
-  before_action :authenticate_admin!
+  before_action :authenticate_user!
 
   # Pundit Authorization
   include Pundit
@@ -13,8 +13,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def pundit_user
-    return NullUser.new('guest') unless admin_signed_in?
-    current_admin
+    return NullUser.new('guest') unless user_signed_in?
+    current_user
   end
 
   def authentication_failure

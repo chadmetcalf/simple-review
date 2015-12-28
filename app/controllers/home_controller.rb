@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  skip_before_action :authenticate_admin!
+  skip_before_action :authenticate_user!
 
   def index
     skip_policy_scope

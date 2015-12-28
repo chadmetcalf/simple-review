@@ -26,7 +26,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
 gem "omniauth-google-oauth2"
-gem 'devise', github: 'plataformatec/devise'
+gem 'devise', github: 'plataformatec/devise', branch: :master
 gem 'pundit'
 
 # Use Puma as the app server
@@ -42,20 +42,20 @@ group :development, :test do
   gem 'dotenv-rails'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'pry-rails'
   gem 'rspec-rails', '~> 3.0'
-  gem 'rails-controller-testing'
 end
 
 group :development do
   gem 'guard', require: false
   gem 'guard-spring', require: false
-  gem 'guard-annotate', require: false
   gem 'guard-pow', require: false
   gem 'guard-bundler', require: false
   gem 'guard-rubocop', require: false
   gem 'guard-rspec', require: false
   gem 'terminal-notifier-guard', require: false
+
+  gem 'annotate'
 
   gem 'quiet_assets'
   gem 'better_errors'
@@ -63,7 +63,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  gem 'active_record_query_trace'
+  # gem 'active_record_query_trace'
 end
 
 group :test do

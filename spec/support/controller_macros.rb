@@ -1,10 +1,10 @@
 # https://github.com/plataformatec/devise/wiki/How-To:-Test-controllers-with-Rails-3-and-4-%28and-RSpec%29
 
 module ControllerMacros
-  def login_admin
+  def login_user
     before(:each) do
-      @request.env["devise.mapping"] = Devise.mappings[:admin]
-      sign_in Admin.new
+      @request.env["devise.mapping"] = Devise.mappings[:user]
+      sign_in User.new
     end
   end
 end
