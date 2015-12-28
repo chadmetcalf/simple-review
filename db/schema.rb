@@ -11,13 +11,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151223050222) do
+ActiveRecord::Schema.define(version: 20151227043433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
-  create_table "admins", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+  create_table "criteria", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "created_by"
+    t.uuid     "rubric_id"
+    t.boolean  "active",      default: true
+    t.text     "description"
+    t.integer  "order"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "descriptors", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "level_id"
+    t.boolean  "active",      default: true
+    t.text     "description"
+    t.integer  "order"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "indicators", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "created_by"
+    t.uuid     "criterium_id"
+    t.boolean  "active",       default: true
+    t.text     "description"
+    t.integer  "order"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "levels", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "indicator_id"
+    t.integer  "order"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "rubrics", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "created_by_id"
+    t.boolean  "active",        default: true
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  create_table "users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -28,22 +73,14 @@ ActiveRecord::Schema.define(version: 20151223050222) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "admins"
     t.string   "provider"
     t.string   "provider_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_admins_on_email", unique: true, using: :btree
-    t.index ["provider"], name: "index_admins_on_provider", using: :btree
-    t.index ["provider_id"], name: "index_admins_on_provider_id", using: :btree
-    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
-  end
-
-  create_table "rubrics", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.uuid     "created_by_id"
-    t.boolean  "active",        default: true
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["provider"], name: "index_users_on_provider", using: :btree
+    t.index ["provider_id"], name: "index_users_on_provider_id", using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
 end
