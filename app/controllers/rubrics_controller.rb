@@ -4,7 +4,7 @@ class RubricsController < ApplicationController
   # GET /rubrics
   # GET /rubrics.json
   def index
-    @rubrics = policy_scope(Rubric.includes(:indicators).all)
+    @rubrics = policy_scope(Rubric.includes(:criteria).all)
   end
 
   # GET /rubrics/1
@@ -68,7 +68,7 @@ class RubricsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_rubric
-      @rubric = Rubric.includes(:indicators).find(params[:id])
+      @rubric = Rubric.includes(:criteria).find(params[:id])
       authorize @rubric
     end
 

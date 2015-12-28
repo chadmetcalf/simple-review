@@ -2,10 +2,19 @@
 
 %p
   %b Created by:
-  = @rubric.created_by
+  = @rubric.created_by_id
+%p
+  %b Name:
+  = @rubric.name
+%p
+  %b Description:
+  = @rubric.description
 %p
   %b Active:
   = @rubric.active
+%p
+  %b Criteria
+  = render @rubric.criteria
 
 = link_to 'Edit', edit_rubric_path(@rubric)
 \|

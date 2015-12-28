@@ -4,6 +4,8 @@
   %thead
     %tr
       %th Created by
+      %th Name
+      %th Description
       %th Active
       %th
       %th
@@ -12,7 +14,9 @@
   %tbody
     - @rubrics.each do |rubric|
       %tr
-        %td= rubric.created_by
+        %td= rubric.created_by_id
+        %td= rubric.name
+        %td= rubric.description
         %td= rubric.active
         %td= link_to 'Show', rubric
         %td= link_to 'Edit', edit_rubric_path(rubric)
@@ -20,4 +24,4 @@
 
 %br
 
-.button= link_to 'New Rubric', new_rubric_path
+= link_to 'New Rubric', new_rubric_path
