@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Level:
+  = @descriptor.level_id
+%p
+  %b Description:
+  = @descriptor.description
+%p
+  %b Order:
+  = @descriptor.order
+
+= link_to 'Edit', edit_descriptor_path(@descriptor)
+\|
+= link_to 'Back', descriptors_path
