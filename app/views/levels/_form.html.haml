@@ -1,0 +1,9 @@
+= simple_form_for(@level) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :indicator_id
+    = f.input :order
+
+  .form-actions
+    = f.button :submit
