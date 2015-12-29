@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151227043433) do
+ActiveRecord::Schema.define(version: 20151229000330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(version: 20151227043433) do
     t.integer  "order"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.uuid     "creator_id"
+    t.uuid     "reviewer_id"
+    t.uuid     "reviewee_id"
+    t.uuid     "rubric_id"
+    t.boolean  "active"
+    t.jsonb    "document"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "rubrics", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
