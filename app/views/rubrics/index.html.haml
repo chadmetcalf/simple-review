@@ -14,7 +14,7 @@
   %tbody
     - @rubrics.each do |rubric|
       %tr
-        %td= rubric.created_by_id
+        %td= rubric.creator_id
         %td= rubric.name
         %td= rubric.description
         %td= rubric.active

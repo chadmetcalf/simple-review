@@ -6,6 +6,6 @@ class IndicatorPolicy < ApplicationPolicy
   end
 
   def permitted_attributtes
-    [:created_by, :rubric_id, :active, :description, :order]
+    [:creator, :rubric_id, :active, :description, :order]
   end
 end

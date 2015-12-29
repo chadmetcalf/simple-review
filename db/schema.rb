@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20151227043433) do
   enable_extension "uuid-ossp"
 
   create_table "criteria", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.uuid     "created_by"
+    t.uuid     "creator"
     t.uuid     "rubric_id"
     t.boolean  "active",      default: true
     t.text     "description"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20151227043433) do
   end
 
   create_table "indicators", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.uuid     "created_by"
+    t.uuid     "creator"
     t.uuid     "criterium_id"
     t.boolean  "active",       default: true
     t.text     "description"
@@ -54,12 +54,12 @@ ActiveRecord::Schema.define(version: 20151227043433) do
   end
 
   create_table "rubrics", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.uuid     "created_by_id"
-    t.boolean  "active",        default: true
+    t.uuid     "creator_id"
+    t.boolean  "active",      default: true
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|

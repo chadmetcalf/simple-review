@@ -4,14 +4,14 @@ RSpec.describe "criteria/index", :type => :view do
   before(:each) do
     assign(:criteria, [
       Criterium.create!(
-        :created_by => "",
+        :creator => "",
         :rubric_id => "",
         :active => false,
         :description => "MyText",
         :order => 1
       ),
       Criterium.create!(
-        :created_by => "",
+        :creator => "",
         :rubric_id => "",
         :active => false,
         :description => "MyText",

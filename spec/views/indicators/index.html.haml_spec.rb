@@ -4,14 +4,14 @@ RSpec.describe "indicators/index", :type => :view do
   before(:each) do
     assign(:indicators, [
       Indicator.create!(
-        :created_by => "",
+        :creator => "",
         :rubric_id => "",
         :active => false,
         :description => "MyText",
         :order => 1
       ),
       Indicator.create!(
-        :created_by => "",
+        :creator => "",
         :rubric_id => "",
         :active => false,
         :description => "MyText",

@@ -2,13 +2,13 @@ class RubricPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       return [] unless user.admin?
-      # scope.where(created_by: user, active: true)
+      # scope.where(creator: user, active: true)
       scope
     end
   end
 
   def show?
-    scope.where(created_by: user)
+    scope.where(creator: user)
   end
 
   def create?
@@ -16,14 +16,14 @@ class RubricPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin? && record.created_by == user
+    user.admin? && record.creator == user
   end
 
   def destroy?
-    user.admin? && record.created_by
+    user.admin? && record.creator
   end
 
   def permitted_attributes
-    [:created_by, :name, :description, :active]
+    [:creator, :name, :description, :active]
   end
 end

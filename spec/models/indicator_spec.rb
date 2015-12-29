@@ -3,7 +3,7 @@
 # Table name: indicators
 #
 #  id           :uuid             not null, primary key
-#  created_by   :uuid
+#  creator      :uuid
 #  criterium_id :uuid
 #  active       :boolean          default(TRUE)
 #  description  :text

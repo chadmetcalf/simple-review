@@ -3,7 +3,7 @@
 # Table name: criteria
 #
 #  id          :uuid             not null, primary key
-#  created_by  :uuid
+#  creator     :uuid
 #  rubric_id   :uuid
 #  active      :boolean          default(TRUE)
 #  description :text

@@ -4,13 +4,13 @@ RSpec.describe "rubrics/index", :type => :view do
   before(:each) do
     assign(:rubrics, [
       Rubric.create!(
-        :created_by_id => "",
+        :creator_id => "",
         :name => "Name",
         :description => "MyText",
         :active => false
       ),
       Rubric.create!(
-        :created_by_id => "",
+        :creator_id => "",
         :name => "Name",
         :description => "MyText",
         :active => false

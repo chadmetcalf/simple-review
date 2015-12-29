@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "criteria/edit", :type => :view do
   before(:each) do
     @criterium = assign(:criterium, Criterium.create!(
-      :created_by => "",
+      :creator => "",
       :rubric_id => "",
       :active => false,
       :description => "MyText",
@@ -16,7 +16,7 @@ RSpec.describe "criteria/edit", :type => :view do
 
     assert_select "form[action=?][method=?]", criterium_path(@criterium), "post" do
 
-      assert_select "input#criterium_created_by[name=?]", "criterium[created_by]"
+      assert_select "input#criterium_creator[name=?]", "criterium[creator]"
 
       assert_select "input#criterium_rubric_id[name=?]", "criterium[rubric_id]"
 

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "criteria/show", :type => :view do
   before(:each) do
     @criterium = assign(:criterium, Criterium.create!(
-      :created_by => "",
+      :creator => "",
       :rubric_id => "",
       :active => false,
       :description => "MyText",

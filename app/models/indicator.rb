@@ -3,7 +3,7 @@
 # Table name: indicators
 #
 #  id           :uuid             not null, primary key
-#  created_by   :uuid
+#  creator      :uuid
 #  criterium_id :uuid
 #  active       :boolean          default(TRUE)
 #  description  :text
@@ -13,7 +13,7 @@
 #
 
 class Indicator < ApplicationRecord
-  belongs_to :created_by, class_name: 'User', required: false
+  belongs_to :creator, class_name: 'User', required: false
   belongs_to :criterium, touch: true
   has_many :levels, -> { order(order: :asc) }
 

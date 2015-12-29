@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reviews
   resources :rubrics do
     resources :criteria,          shallow: true do
       resources :indicators,      shallow: true do

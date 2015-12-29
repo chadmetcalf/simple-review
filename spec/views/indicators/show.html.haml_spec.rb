@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "indicators/show", :type => :view do
   before(:each) do
     @indicator = assign(:indicator, Indicator.create!(
-      :created_by => "",
+      :creator => "",
       :rubric_id => "",
       :active => false,
       :description => "MyText",

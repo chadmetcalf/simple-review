@@ -12,6 +12,6 @@
 #
 
 class Descriptor < ApplicationRecord
-  belongs_to :created_by, class_name: 'User', required: false
+  belongs_to :creator, class_name: 'User', required: false
   belongs_to :level, touch: true
 end

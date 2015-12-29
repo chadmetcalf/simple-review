@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "rubrics/edit", :type => :view do
   before(:each) do
     @rubric = assign(:rubric, Rubric.create!(
-      :created_by_id => "",
+      :creator_id => "",
       :name => "MyString",
       :description => "MyText",
       :active => false
@@ -15,7 +15,7 @@ RSpec.describe "rubrics/edit", :type => :view do
 
     assert_select "form[action=?][method=?]", rubric_path(@rubric), "post" do
 
-      assert_select "input#rubric_created_by_id[name=?]", "rubric[created_by_id]"
+      assert_select "input#rubric_creator_id[name=?]", "rubric[creator_id]"
 
       assert_select "input#rubric_name[name=?]", "rubric[name]"
 

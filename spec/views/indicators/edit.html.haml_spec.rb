@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "indicators/edit", :type => :view do
   before(:each) do
     @indicator = assign(:indicator, Indicator.create!(
-      :created_by => "",
+      :creator => "",
       :rubric_id => "",
       :active => false,
       :description => "MyText",
@@ -16,7 +16,7 @@ RSpec.describe "indicators/edit", :type => :view do
 
     assert_select "form[action=?][method=?]", indicator_path(@indicator), "post" do
 
-      assert_select "input#indicator_created_by[name=?]", "indicator[created_by]"
+      assert_select "input#indicator_creator[name=?]", "indicator[creator]"
 
       assert_select "input#indicator_rubric_id[name=?]", "indicator[rubric_id]"
 

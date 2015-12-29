@@ -42,7 +42,10 @@ class User < ApplicationRecord
     end
   end
 
-  has_many :rubrics, foreign_key: :created_by
+  has_many :rubrics, foreign_key: :creator
+  has_many :reviews, foreign_key: :creator
+  has_many :reviews, foreign_key: :reviewer
+  has_many :reviews, foreign_key: :reviewee
 
   def admin?
     true

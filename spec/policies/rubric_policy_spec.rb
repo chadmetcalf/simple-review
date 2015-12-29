@@ -1,7 +1,7 @@
 RSpec.describe RubricPolicy do
   let(:user)  { User.new }
   let(:user)   { NullUser.new('guest') }
-  let(:rubric) { Rubric.create(created_by: user) }
+  let(:rubric) { Rubric.create(creator: user) }
 
   subject { described_class }
 
@@ -15,7 +15,7 @@ RSpec.describe RubricPolicy do
 
     context 'for a guest' do
       it 'hides all rubrics' do
-        rubric = Rubric.create(created_by: user, active: true)
+        rubric = Rubric.create(creator: user, active: true)
         policy_scope = RubricPolicy::Scope.new(user, scope).resolve
 
         expect(policy_scope).not_to include(rubric)
@@ -24,14 +24,14 @@ RSpec.describe RubricPolicy do
 
     context "for an user" do
       it "hides unactive rubrics" do
-        rubric = Rubric.create(created_by: user, active: false)
+        rubric = Rubric.create(creator: user, active: false)
         policy_scope = RubricPolicy::Scope.new(user, scope).resolve
 
         expect(policy_scope).not_to include(rubric)
       end
 
       it "shows active rubrics" do
-        rubric = Rubric.create(created_by: user, active: true)
+        rubric = Rubric.create(creator: user, active: true)
         policy_scope = RubricPolicy::Scope.new(user, scope).resolve
 
         expect(policy_scope).to include(rubric)
