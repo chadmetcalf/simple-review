@@ -1,79 +1,17 @@
 class RubricsController < ApplicationController
-  before_action :set_rubric, only: [:show, :edit, :update, :destroy]
+  # To customize the behavior of this controller,
+  # simply overwrite any of the RESTful actions. For example:
+  #
+  # def index
+  #   super
+  #   @resources = Rubric.all.paginate(10, params[:page])
+  # end
 
-  # GET /rubrics
-  # GET /rubrics.json
-  def index
-    @rubrics = policy_scope(Rubric.includes(:criteria).all)
-  end
+  # Define a custom finder by overriding the `find_resource` method:
+  # def find_resource(param)
+  #   Rubric.find_by!(slug: param)
+  # end
 
-  # GET /rubrics/1
-  # GET /rubrics/1.json
-  def show
-  end
-
-  # GET /rubrics/new
-  def new
-    @rubric = Rubric.new
-    authorize @rubric
-  end
-
-  # GET /rubrics/1/edit
-  def edit
-  end
-
-  # POST /rubrics
-  # POST /rubrics.json
-  def create
-    @rubric = Rubric.new(rubric_params) do |rubric|
-      rubric.creator = current_user
-    end
-    authorize @rubric
-
-    respond_to do |format|
-      if @rubric.save
-        format.html { redirect_to rubrics_path, notice: 'Rubric was successfully created.' }
-        format.json { render :show, status: :created, location: @rubric }
-      else
-        format.html { render :edit }
-        format.json { render json: @rubric.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /rubrics/1
-  # PATCH/PUT /rubrics/1.json
-  def update
-    respond_to do |format|
-      if @rubric.update(rubric_params)
-        format.html { redirect_to rubrics_path, notice: 'Rubric was successfully updated.' }
-        format.json { render :show, status: :ok, location: @rubric }
-      else
-        format.html { render :edit }
-        format.json { render json: @rubric.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /rubrics/1
-  # DELETE /rubrics/1.json
-  def destroy
-    @rubric.destroy
-    respond_to do |format|
-      format.html { redirect_to rubrics_url, notice: 'Rubric was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_rubric
-      @rubric = Rubric.includes(:criteria).find(params[:id])
-      authorize @rubric
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def rubric_params
-      params.require(:rubric).permit(policy(Rubric).permitted_attributes)
-    end
+  # See https://administrate-docs.herokuapp.com/customizing_controller_actions
+  # for more information
 end

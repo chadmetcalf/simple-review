@@ -1,18 +1,12 @@
 Rails.application.routes.draw do
-  resources :rubrics do
-    resources :reviews,           shallow: true
-    resources :criteria,          shallow: true do
-      resources :indicators,      shallow: true do
-        resources :levels,        shallow: true do
-          resources :descriptors, shallow: true
-        end
-      end
-    end
-  end
 
-  resources :users do
-    resources :reviews, shallow: true
-  end
+  # namespace :admin do
+    DashboardManifest::DASHBOARDS.each do |dashboard_resource|
+      resources dashboard_resource
+    end
+
+    root controller: DashboardManifest::ROOT_DASHBOARD, action: :index
+  # end
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -21,7 +15,8 @@ Rails.application.routes.draw do
   # mount ActionCable.server => '/cable'
 
   authenticated :user do
-    root to: 'dashboard#index', as: :authenticated_root
+      root controller: DashboardManifest::ROOT_DASHBOARD, action: :index, as: :authenticated_root
+    # root to: 'dashboard#index', as: :authenticated_root
   end
   root to: 'home#index'
 end

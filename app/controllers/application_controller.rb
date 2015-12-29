@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::Base
+class ApplicationController < Administrate::ApplicationController
   # Devise Authentication
   before_action :authenticate_user!
 

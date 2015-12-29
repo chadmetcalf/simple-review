@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.0'
 gem "omniauth-google-oauth2"
 gem 'devise', github: 'plataformatec/devise', branch: :master
 gem 'pundit'
+gem 'administrate', github: 'klaustopher/administrate'
 
 # Use Puma as the app server
 gem 'puma'
@@ -63,7 +64,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
+  # Tools
   # gem 'active_record_query_trace'
+  gem 'faker'
 end
 
 group :test do
