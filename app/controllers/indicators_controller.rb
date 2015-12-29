@@ -71,4 +71,5 @@ class IndicatorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def indicator_params
       params.require(:indicator).permit(policy(Indicator).permitted_attributes)
+    end
 end
